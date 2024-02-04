@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <style>
+        body{
+            background-color:beige;
+        }
+        table tr td {
+            border-radius: 5px;
+            border: 2px solid green;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: blue;">Abhishek pal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Registration No.  12219874 </h1>
+    
+    <fieldset>
+        <legend>User information</legend>
+        <form action="#" autocomplete="off" onsubmit="return check()">
+            <table style="width:100%" cellpadding="10" cellspacing="10" align="center">
+                <tr>
+                    <td>
+                        <input type="text" id="name" placeholder="Enter Your name"> 
+                        <span id="name1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" id="password" placeholder="Enter Your password"> 
+                        <span id="password1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" id="conpass" placeholder="Enter Your Confirm password"> 
+                        <span id="conpass1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="tel" id="mobile" placeholder="Enter Your mobile"> 
+                        <span id="mobile1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" id="email" placeholder="Enter Your Email"> 
+                        <span id="email1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit"> 
+                        <span id="button1"></span>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function check() {
+                var name = document.getElementById('name').value;
+                var password = document.getElementById('password').value;
+                var conpass = document.getElementById('conpass').value;
+
+                // Reset error messages
+                document.getElementById('name1').innerHTML = '';
+                document.getElementById('password1').innerHTML = '';
+                document.getElementById('conpass1').innerHTML = '';
+
+                // Validate name
+                if (name === "") {
+                    document.getElementById('name1').innerHTML = 'Name should not be null';
+                    return false;
+                } else if (!isNaN(name)) {
+                    document.getElementById('name1').innerHTML = 'Name should not be a number';
+                    return false;
+                } else if (!(name.length > 2 && name.length < 20)) {
+                    document.getElementById('name1').innerHTML = 'Name should be between 3 and 9 characters';
+                    return false;
+                }
+
+                // Validate password
+                if (password.length < 8) {
+                    document.getElementById('password1').innerHTML = 'Password length should be at least 8 characters';
+                    return false;
+                }
+
+                // Validate confirm password
+                if (conpass !== password) { 
+                    document.getElementById('conpass1').innerHTML = 'Confirm password does not match';
+                    return false;
+                }
+
+                // Form is valid
+                alert('Form submitted successfully!');
+                return true;
+            }
+        </script>
+    </fieldset>
+</body>
+</html>
